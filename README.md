@@ -1,1 +1,3 @@
 # CLARIAH.github.io
+
+Can be used for CLARIAH demo's and such...
