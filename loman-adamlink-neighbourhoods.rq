@@ -1,0 +1,21 @@
+#+ summary: retrieve polygons and names for Amsterdam neighbourhoods in ca. 1860 (Loman map)
+#+ tags:
+#+   - polygon
+#+   - loman
+#+   - neighbourhood
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX juso: <http://rdfs.co/juso/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+SELECT ?wkt ?wktLabel WHERE {
+  ?wijk rdf:type juso:Neighborhood . # give me all 'things' that are defined as a neighborhood (we'll refer to those as ?wijk)
+  ?wijk skos:prefLabel ?wijkNaam . # for those things, give me the 'nice' labels (and we'll refer to those as ?wijkNaam)
+  ?wijk geo:hasGeometry/geo:asWKT ?wkt . # the ?wijk things give me the geometries and the geometry-related polygons
+  BIND (?wijkNaam as ?wktLabel) # take ?wijkNaam and refer to it as ?wktLabel. wktLabel we can use as pins on a map.
+                                # here the BIND is a bit overkill, but in the BIND statement we usually do more complicated
+                                # stuff, e.g. alter the contents of ?wijkNaam and then refer to that altered contents as ?wktLabel
+} 
+LIMIT 51 # there are 50 neighborhoods, so this should suffice.
