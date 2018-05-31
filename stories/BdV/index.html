@@ -6,26 +6,22 @@
   </head>
   <body>
       <div class="container story" data-query-endpoint="https://api.druid.datalegend.net/datasets/dataLegend/BdVteaching/services/endpoint/sparql">
-    <h1 class="header">Boudien De Vries' Electoraat en Elite (then and now)</h1>
-    <p>In 1986 Boudien de Vries published her book on the elite of Amsterdam.
-    To describe her data she used maps providing aggregated neighbourhood level data.
-    </p>
-    <img src="../img/bdv_bevolking.jpg" alt="Population size for Aggregated Amsterdam Neighbourhoods" width="500">
-    <img src="../img/bdv_geboorten.jpg" alt="Births for Aggregated Amsterdam Neighbourhoods" width="500">
-    <p>
-    Today we are able to:
-    <ul>
-        <li>provide the same data on a non-aggregate level</li>
-        <li>provide the data on original (ca. 1860) maps of Amsterdam</li>
-        <li>provide the result in an interactive way (click on parts of map)</li>
-        <li>provide the query directly for you to edit (and double check the results!)</li>
-    </ul>
+    <h1 class="header">GRLC meets Triply's Data Stories</h1>
+    <p>Once upon a time  there were SPARQL queries. Brilliant to retrieve data with, horrible to share over the web.
+    Basil eased this bitter taste somewhat, but it was only GRLC that allowed SPARQL queries to taste like API's.
+    Online executable queries, awesome... complete with tags, and a summary and provenance...
+    But great food is not just about taste... it's also about presentation....
     </p>
     <p>
-    The following query is stored in
-    <a href="https://github.com/CLARIAH/BdVteaching-queries/">GRLC</a>, but presented here in an editable way, with interactive result.
+    Enter Data Stories.. and as it so happens... perfectly compatible with GRLC.
+    For example, the query below actually resides <a href="https://github.com/CLARIAH/BdVteaching-queries/blob/master/loman-adamlink-neighbourhoods.rq">here</a>, stored with GRLC tags and all.
+    And while you have all the benefits of <a href="http://grlc.io/api/CLARIAH/BdVteaching-queries">running the query in GRLC</a>, you get all the beauty of data stories's viz and text as you can see below (yes, that's right: sparql query output on a map!).
     </p>
+    <div data-query data-query-output="leaflet" data-query-sparql="loman-adamlink-neighbourhoods.rq"></div>
+    <p>
+    It would be cool if you could directly visualize the query from a grlc repo:
     <div data-query data-query-output="leaflet" data-query-sparql="loman-adamlink-bdv.rq"></div>
+    </p>
     <script src="https://cdn.rawgit.com/wouterbeek/Data-Stories/master/deps/yasgui.min.js?v=1"></script>
     <script type="text/javascript">YASGUI.sparqlStories();</script>
   </body>
