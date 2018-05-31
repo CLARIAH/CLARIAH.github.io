@@ -1,0 +1,20 @@
+#+ summary: visualize data for Amsterdam neighbourhoods in ca. 1860 (Loman map)
+#+ tags:
+#+   - neighbourhood
+#+   - BoudienDeVries
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+prefix juso: <http://rdfs.co/juso/>
+prefix bdv-vocab: <https://iisg.amsterdam/BdV/Amsterdam/vocab/>
+
+SELECT ?wkt ?wktLabel (concat('viridis,', ?hg) as ?wktColor) WHERE {
+  ?wijk rdf:type juso:Neighborhood .
+  ?wijk skos:prefLabel ?naam .
+  ?wijk geo:hasGeometry/geo:asWKT ?wkt .
+  ?wijk bdv-vocab:huisgenoten ?hg .
+BIND (concat('huisgenoten ', ?naam, ': ', ?hg) as ?wktLabel)
+}
+LIMIT 51 # there are 50 neighborhoods, so this should suffice.
